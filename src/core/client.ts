@@ -4,7 +4,7 @@ const CONNECT_TIMEOUT_MS = 30_000;
 const MAX_RETRIES = 3;
 const RETRY_DELAYS = [1000, 3000, 8000];
 
-const ANTHROPIC_VERSION = "2024-06-01";
+const ANTHROPIC_VERSION = "2023-06-01";
 
 function isRetryable(status: number): boolean {
   return status === 429 || status === 502 || status === 503 || status === 504;
@@ -33,7 +33,8 @@ function getHeaders(config: Config): Record<string, string> {
   }
   // claude 已经不再使用, 改为默认选项了
   //"prompt-caching-2024-07-31"
-  const betaFeatures: string[] = [];
+  // const betaFeatures: string[] = [];
+  const betaFeatures: string[] = ["prompt-caching-2024-07-31"];
   if (config.thinkingBudge > 0) {
     betaFeatures.push("interleaved-thinking-2025-05-14");
   }

@@ -37,3 +37,10 @@ export interface Message {
   role: "user" | "assistant";
   content: string | ContentBlock[];
 }
+
+export interface UsageStats {
+  inputTokens: number;
+  outputTokens: number;
+  cacheCreationInputTokens: number;
+  cacheReadInputTokens: number;
+}
